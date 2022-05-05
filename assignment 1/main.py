@@ -181,7 +181,7 @@ def needleman_wunsch(filename):
         for j in range(1, len(matrix[0])):
             nuc2 = sequence2[j - 1]
 
-            # three options to check for possbile scores
+            # three options to check for possible scores
             opt1 = matrix[i - 1][j - 1]
             opt2 = matrix[i][j - 1]
             opt3 = matrix[i - 1][j]
@@ -291,13 +291,13 @@ def smith_waterman(filename):
     for x in range(1, len(matrix)):
         for y in range(1, len(matrix[0])):
             if matrix[x][y] == largest_score:
-                position = (x,y)
+                position = (x, y)
                 if position not in positions:
                     positions.append(position)
     list10 = []
     position = 0
 
-    #runs all possible locations of largest scores so that we can get all possible sequence alignments
+    # runs all possible locations of largest scores so that we can get all possible sequence alignments
     while position < len(positions):
         position1, position2 = positions[position][0], positions[position][1]
         list1, list2 = [], []
@@ -338,14 +338,14 @@ def smith_waterman(filename):
         str1 = sequence1[position1:positions[position][0]]
         str2 = sequence2[position2:positions[position][1]]
         pos = position + 1
-        str3 = "Local Alignment " + str(pos) + " of " + str(len(positions)) + ":\n" + \
-                sequenceAligningInfo(list1, list2, largest_score, str2, str1)
+        str3 = "Local Alignment " + str(pos) + " of " + str(len(positions)) + ":\n" + sequenceAligningInfo(list1, list2,
+                                                                                                           largest_score,
+                                                                                                           str2, str1)
         position += 1
         list10.append(str3)
         list10.append("\n")
 
     return list10
-
 
 
 def main():
